@@ -5,8 +5,6 @@ import numpy as np
 
 file_path=open(r'C:\Users\lenovo\Desktop\data.csv')
 file_data=pd.read_csv(file_path)
-file_path=open(r'C:\Users\lenovo\Desktop\data.csv')
-file_data=pd.read_csv(file_path)
 file_data=file_data.fillna(value=0)
 file_data=pd.concat([file_data.iloc[:,0:2],file_data.iloc[:,44:64]],axis=1)
 data=file_data

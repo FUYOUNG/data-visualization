@@ -1,3 +1,4 @@
+#词频统计
 import jieba
 topn=1000
 text = open(r'C:\Users\lenovo\Desktop\斗破苍穹.txt', "r", encoding='gbk').read()#读取文件
@@ -16,6 +17,8 @@ for i in range (topn):
     word,count=items[i]
     f.writelines("{}\t{}\n".format(word,count))
 f.close()
+
+#构造词云图
 import wordcloud
 import matplotlib.pyplot as plt
 from imageio import imread
@@ -34,6 +37,8 @@ wcloud.to_file('斗破苍穹.jpg')
 plt.imshow(wcloud)
 plt.axis('off')
 plt.show()
+
+#段落分析
 import re
 from pyecharts import options as opts
 lst_chapter=[]
@@ -45,7 +50,6 @@ for x in chapter:
 lst_start_chapterindex=[]
 for x in lst_chapter:
     lst_start_chapterindex.append(text.index(x))
-
 
 lst_end_chapterindex=lst_start_chapterindex[1:]+[len(text)]
 lst_chapterindex=list(zip(lst_start_chapterindex,lst_end_chapterindex))
@@ -75,6 +79,7 @@ line.set_global_opts(
         xaxis_opts=opts.AxisOpts(type_="category", boundary_gap=False),
     )
 line.render("前150萧炎出场数.html")
+
 import matplotlib.pyplot as plt
 cnt_chap=[]
 cnt_word=[]
@@ -92,6 +97,8 @@ plt.xlabel("章节段数",Fontproperties='SimHei',fontsize=15)
 plt.ylabel("章节字数",Fontproperties='SimHei',fontsize=15)
 plt.title("斗破苍穹前30",Fontproperties='SimHei')
 plt.savefig('斗破前30.png')
+
+#社交网络图
 text = open(r'C:\Users\lenovo\Desktop\斗破苍穹.txt', "r", encoding='gbk').read()#读取文件
 Names=['萧炎','小医仙','美杜莎','云韵','紫研','海波','纳兰','韩枫','药老','苏千','萧厉','雅妃']
 relations={}
